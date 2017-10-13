@@ -33,7 +33,35 @@ void time_string_into_words(char* text)
     );
 }
 
+static const char* hrs[12] = {
+    "twelve", "one", "two", "three", "four", "five",
+    "six", "seven", "eight", "nine", "ten", "eleven",
+};
+static const char* mins[60] = {
+    "o'clock", "oh one", "oh two", "oh three", "oh four", "oh five", "oh six",
+    "oh seven", "oh eight", "oh nine",
+
+    "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
+    "seventeen", "eighteen", "nineteen",
+
+    "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four",
+    "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine",
+
+    "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four",
+    "thirty-five", "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine",
+
+    "forty", "forty-one", "forty-two", "forty-three", "forty-four",
+    "forty-five", "forty-six", "forty-seven", "forty-eight", "forty-nine",
+
+    "fifty", "fifty-one", "fifty-two", "fifty-three", "fifty-four",
+    "fifty-five", "fifty-six", "fifty-seven", "fifty-eight", "fifty-nine",
+};
+
 void time_into_words(unsigned int hour, unsigned int minute)
 {
-    printf("time_into_words(%u, %u)\n", hour, minute);
+    printf(
+        "It's %s %s %cM.\n",
+        hrs[hour % 12], mins[minute % 60],
+        (hour < 12) ? 'A' : 'P'
+    );
 }
