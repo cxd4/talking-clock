@@ -12,3 +12,5 @@ as -o obj/main.o                        obj/main.asm
 
 echo Linking assembled objects...
 cc -s -o talktime $OBJ_LIST
+
+./talktime 00:00 01:30 12:05 14:01 20:29 21:00
