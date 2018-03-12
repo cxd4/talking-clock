@@ -16,17 +16,11 @@ int main(int argc, char* argv[])
 
 void time_string_into_words(char* text)
 {
-    char* new_offset;
+    char* separator;
     unsigned long hour, minute;
 
-    new_offset = strchr(text, ':');
-    while (new_offset != NULL) {
-        *(new_offset) = ' '; /* Use spaces to separate HH from MM for strtol. */
-        new_offset = strchr(text, ':'); /* Just in case user inputs HH:MM:SS. */
-    }
-
-    hour = strtoul(text, &new_offset, 10);
-    minute = strtoul(new_offset, NULL, 10);
+    hour = strtoul(text, &separator, 10);
+    minute = (*separator == ':') ? strtoul(separator + 1, NULL, 10) : 0;
     time_into_words(
         (unsigned int)(hour % 24),
         (unsigned int)(minute % 60)
